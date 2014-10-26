@@ -51,19 +51,25 @@ sub genesinregion {
 	my @input = @_;
 	my @genesinregion;	
 	foreach my $genes (keys $input[3]){
-		${$input[3]}{$genes}{locus} =~ /chr([0-9]*):([0-9]*)-([0-9]*)/; #extracts the chromosome, start and end position
+		${$input[3]}{$genes}{locus} =~ /chr([X|Y]|[Un]|[0-9]*):([0-9]*)-([0-9]*)/; #extracts the chromosome, start and end position
 		my $chr = $1;
 		my $start = $2;
 		my $end =$3;
-		
-if ($chr==$input[0] and ($start >= $input[1] and $end <= $input[2])){ #compars the position of the gene with the query position and adds genes within the region to an array
+	if ($chr =~ /X|Y/){
+		if ($chr eq $input[0] and ($start >= $input[1] and $end <= $input[2])){
+	push @genesinregion, $genes;
+	}				 #compars the position of the gene with the query position and adds genes within the region to an array
+}else{	
+	if ($chr==$input[0] and ($start >= $input[1] and $end <= $input[2])){ #compars the position of the gene with the query position and adds genes within the region to an array
 		push @genesinregion, $genes;	
 				}
+		}
 	 }
+	
 	return @genesinregion;
-}	
+	
 
-
+}
 ###sub siggenes returns the significant genes within a hash after conisdering fold change and p_value
 
 sub siggenes {
