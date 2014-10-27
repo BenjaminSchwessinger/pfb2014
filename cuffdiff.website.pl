@@ -21,9 +21,9 @@ start_multipart_form, #start the form requesting all the infromation to be searc
 "Upload your cuffdiff file here as tab delimited file:",br,
 filefield(-name => 'uploaded_file'),hr, #call for the file that content will be read into an array an passed into a subroutinethe rest of the fields queries all the pramaters
 "Enter chromosome number, start and end position here:",br,
-textarea(-name =>'chromosome', -rows=>1, -cols=>1),
-textarea(-name =>'startposition', -rows=>1, -cols=>10),
-textarea(-name => 'endposition', -rows=>1, -cols=>10),
+textfield(-name =>'chromosome', -rows=>1, -cols=>2),
+textfield(-name =>'startposition', -rows=>1, -cols=>10),
+textfield(-name => 'endposition', -rows=>1, -cols=>10),
 hr,
 "Enter p_value here:",br,
 textarea(-name => 'p_value',-rows =>1, -cols=>10),br,
