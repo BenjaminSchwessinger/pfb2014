@@ -1,5 +1,5 @@
 package ProcessVCF;
-#file: ProcessVCF.pm
+#file: ProcessVCF.pm, written by Dr. Gulum Kosova
 use strict;
 use warnings;
 use base 'Exporter';
